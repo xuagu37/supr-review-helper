@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "SUPR Review Helper",
+  "version": "0.2.0",
+  "description": "Scrape SUPR proposal info and generate review drafts using a local Llama3 model.",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "https://supr.naiss.se/*",
+    "http://localhost:11434/*"
+  ],
+
+  "action": {
+    "default_title": "SUPR Review Helper"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://supr.naiss.se/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
